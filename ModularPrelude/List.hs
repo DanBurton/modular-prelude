@@ -20,8 +20,7 @@ data ListModule = List
   , pack        :: forall a. [a] -> [a]
   , unpack      :: forall a. [a] -> [a]
   , fromList    :: forall a. [a] -> [a]
-  , toList      :: forall a. [a] -> [a]
-  , lookup      :: forall k a. k -> Eq k => [(k, a)] -> Maybe a
+  , toList      :: forall a. [a] -> k -> [(k, a)] -> Maybe a
   , empty       :: forall a. [a]
   , insert      :: forall a. a -> [a] -> [a]
   , delete      :: forall a. Eq a => a -> [a] -> [a]
