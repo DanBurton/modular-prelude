@@ -21,7 +21,7 @@ but check it out:
 The right-hand side of the imports doesn't have to be that verbose.
 Just use `def` if that suits you.
 
-    ghci> let Import.T{length, filter, pack} = def
+    ghci> let Import.Text{length, filter, pack} = def
     ghci> length $ filter Data.Char.isAlpha $ pack "Hello, world!"
 
 Warning: apparently doing two "imports" of the same name
