@@ -11,7 +11,7 @@ import qualified Data.ByteString as S
 import qualified Filesystem.Path.CurrentOS as F
 
 
-data ByteStringModule = S
+data ByteStringModule = ByteString
   { map       :: (Word8 -> Word8) -> ByteString -> ByteString
   , concatMap :: (Word8 -> ByteString) -> ByteString -> ByteString
   , filter    :: (Word8 -> Bool) -> ByteString -> ByteString
@@ -34,7 +34,7 @@ data ByteStringModule = S
 
 
 _Data_ByteString_ :: ByteStringModule
-_Data_ByteString_ = S
+_Data_ByteString_ = ByteString
   { map       = S.map
   , concatMap = S.concatMap
   , filter    = S.filter

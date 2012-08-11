@@ -10,7 +10,7 @@ import ModularPrelude
 import qualified Data.Vector as V
 
 
-data VectorModule = V
+data VectorModule = Vector
   { map       :: forall a b. (a -> b) -> Vector a -> Vector b
   , concatMap :: forall a b. (a -> Vector b) -> Vector a -> Vector b
   , filter    :: forall a. (a -> Bool) -> Vector a -> Vector a
@@ -37,7 +37,7 @@ data VectorModule = V
 
 
 _Data_Vector_ :: VectorModule
-_Data_Vector_ = V
+_Data_Vector_ = Vector
   { map       = V.map
   , concatMap = V.concatMap
   , filter    = V.filter

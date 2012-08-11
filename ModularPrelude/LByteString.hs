@@ -11,7 +11,7 @@ import qualified Data.ByteString.Lazy as L
 import qualified Filesystem.Path.CurrentOS as F
 
 
-data LByteStringModule = L
+data LByteStringModule = LByteString
   { map       :: (Word8 -> Word8) -> LByteString -> LByteString
   , concatMap :: (Word8 -> LByteString) -> LByteString -> LByteString
   , filter    :: (Word8 -> Bool) -> LByteString -> LByteString
@@ -34,7 +34,7 @@ data LByteStringModule = L
 
 
 _Data_ByteString_Lazy_ :: LByteStringModule
-_Data_ByteString_Lazy_ = L
+_Data_ByteString_Lazy_ = LByteString
   { map       = L.map
   , concatMap = L.concatMap
   , filter    = L.filter

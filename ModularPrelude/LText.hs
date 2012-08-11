@@ -12,7 +12,7 @@ import qualified Data.Text.Lazy.IO as TL
 import qualified Filesystem.Path.CurrentOS as F
 
 
-data LTextModule = TL
+data LTextModule = LText
   { map       :: (Char -> Char) -> LText -> LText
   , concatMap :: (Char -> LText) -> LText -> LText
   , filter    :: (Char -> Bool) -> LText -> LText
@@ -35,7 +35,7 @@ data LTextModule = TL
 
 
 _Data_Text_Lazy_ :: LTextModule
-_Data_Text_Lazy_ = TL
+_Data_Text_Lazy_ = LText
   { map       = TL.map
   , concatMap = TL.concatMap
   , filter    = TL.filter

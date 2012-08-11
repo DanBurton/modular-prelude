@@ -23,18 +23,18 @@ import qualified ModularPrelude.FilePath    as Import
 import qualified ModularPrelude.Classy      as Import
 
 
-import qualified Data.ByteString            as S
-import qualified Data.ByteString.Lazy       as L
-import qualified Data.Text                  as T
-import qualified Data.Text.Lazy             as TL
-import qualified Data.Vector                as V
-import qualified Data.Vector.Unboxed        as UV
+import qualified Data.ByteString            as ByteString
+import qualified Data.ByteString.Lazy       as LByteString
+import qualified Data.Text                  as Text
+import qualified Data.Text.Lazy             as LText
+import qualified Data.Vector                as Vector
+import qualified Data.Vector.Unboxed        as UVector
 import qualified Data.Map                   as Map
 import qualified Data.HashMap.Strict        as HashMap
 import qualified Data.HashMap.Lazy          as LHashMap
 import qualified Data.List                  as List
 import qualified Data.Set                   as Set
 import qualified Data.HashSet               as HashSet
-import qualified Filesystem.Path.CurrentOS  as F
+import qualified Filesystem.Path.CurrentOS  as FilePath
 import qualified ClassyPrelude              as Classy
 

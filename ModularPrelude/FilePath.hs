@@ -11,7 +11,7 @@ import ModularPrelude
 import qualified Filesystem.Path.CurrentOS as F
 
 
-data FilePathModule = F
+data FilePathModule = FilePath
   { pack        :: String -> FilePath
   , unpack      :: FilePath -> String
   , stripPrefix :: FilePath -> FilePath -> Maybe FilePath
@@ -19,7 +19,7 @@ data FilePathModule = F
 
 
 _Filesystem_Path_CurrentOS_ :: FilePathModule
-_Filesystem_Path_CurrentOS_ = F
+_Filesystem_Path_CurrentOS_ = FilePath
   { pack        = F.decodeString
   , unpack      = F.encodeString
   , stripPrefix = F.stripPrefix

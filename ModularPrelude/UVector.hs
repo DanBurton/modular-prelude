@@ -15,7 +15,7 @@ import qualified Data.Vector.Unboxed as UV
 type UVector = UV.Vector
 
 
-data UVectorModule = UV
+data UVectorModule = UVector
   { map       :: forall a b. (Unbox a, Unbox b)
                                    => (a -> b) -> UVector a -> UVector b
   , concatMap :: forall a b. (Unbox a, Unbox b)
@@ -47,7 +47,7 @@ data UVectorModule = UV
 
 
 _Data_Vector_Unboxed_ :: UVectorModule
-_Data_Vector_Unboxed_ = UV
+_Data_Vector_Unboxed_ = UVector
   { map       = UV.map
   , concatMap = UV.concatMap
   , filter    = UV.filter

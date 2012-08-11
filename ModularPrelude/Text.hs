@@ -12,7 +12,7 @@ import qualified Data.Text.IO as T
 import qualified Filesystem.Path.CurrentOS as F
 
 
-data TextModule = T
+data TextModule = Text
   { map       :: (Char -> Char) -> Text -> Text
   , concatMap :: (Char -> Text) -> Text -> Text
   , filter    :: (Char -> Bool) -> Text -> Text
@@ -35,7 +35,7 @@ data TextModule = T
 
 
 _Data_Text_ :: TextModule
-_Data_Text_ = T
+_Data_Text_ = Text
   { map       = T.map
   , concatMap = T.concatMap
   , filter    = T.filter
