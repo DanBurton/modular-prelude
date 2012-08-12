@@ -8,11 +8,7 @@ module ModularPrelude.UVector
 
 
 import ModularPrelude
-import Data.Vector.Unboxed (Unbox)
 import qualified Data.Vector.Unboxed as UV
-
--- TODO: move this to BasicPrelude
-type UVector = UV.Vector
 
 
 data UVectorModule = UVector
