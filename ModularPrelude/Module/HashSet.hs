@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
-module ModularPrelude.HashSet
+module ModularPrelude.Module.HashSet
   ( HashSetModule (..)
   , _Data_HashSet_
   ) where

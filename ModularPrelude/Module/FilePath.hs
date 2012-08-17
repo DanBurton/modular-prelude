@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module ModularPrelude.FilePath
+module ModularPrelude.Module.FilePath
   ( FilePathModule (..)
   , _Filesystem_Path_CurrentOS_
   ) where

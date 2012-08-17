@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module ModularPrelude.LByteString
+module ModularPrelude.Module.LByteString
   ( LByteStringModule (..)
   , _Data_ByteString_Lazy_
   ) where

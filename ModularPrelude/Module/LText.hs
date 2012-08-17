@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module ModularPrelude.LText
+module ModularPrelude.Module.LText
   ( LTextModule (..)
   , _Data_Text_Lazy_
   ) where

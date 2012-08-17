@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
-module ModularPrelude.UVector
+module ModularPrelude.Module.UVector
   ( UVectorModule (..)
   , _Data_Vector_Unboxed_
   , UVector

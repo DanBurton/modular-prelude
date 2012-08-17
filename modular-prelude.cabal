@@ -1,5 +1,5 @@
 name:                modular-prelude
-version:             0.2.0.0
+version:             0.3.0.0
 synopsis:            A new Prelude featuring first class modules
 
 homepage:            https://github.com/DanBurton/modular-prelude#readme
@@ -14,21 +14,26 @@ cabal-version:       >=1.8
 
 library
   exposed-modules:     ModularPrelude
-                     , ModularPrelude.FilePath
-                     , ModularPrelude.From
-                     , ModularPrelude.Set
-                     , ModularPrelude.List
-                     , ModularPrelude.Classy
-                     , ModularPrelude.LByteString
-                     , ModularPrelude.Vector
-                     , ModularPrelude.HashSet
-                     , ModularPrelude.UVector
-                     , ModularPrelude.Text
-                     , ModularPrelude.Map
-                     , ModularPrelude.LHashMap
-                     , ModularPrelude.ByteString
-                     , ModularPrelude.LText
-                     , ModularPrelude.HashMap
+
+                     ,   ModularPrelude.From
+
+                     ,     ModularPrelude.Module.FilePath
+                     ,     ModularPrelude.Module.Set
+                     ,     ModularPrelude.Module.List
+                     ,     ModularPrelude.Module.LByteString
+                     ,     ModularPrelude.Module.Vector
+                     ,     ModularPrelude.Module.HashSet
+                     ,     ModularPrelude.Module.UVector
+                     ,     ModularPrelude.Module.Text
+                     ,     ModularPrelude.Module.Map
+                     ,     ModularPrelude.Module.LHashMap
+                     ,     ModularPrelude.Module.ByteString
+                     ,     ModularPrelude.Module.LText
+                     ,     ModularPrelude.Module.HashMap
+
+                     ,   ModularPrelude.Classy
+                     ,     ModularPrelude.From.Classy
+                     ,     ModularPrelude.Module.Classy
 
   build-depends:       base==4.*
                      , basic-prelude==0.2.0.*

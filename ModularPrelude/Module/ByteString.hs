@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module ModularPrelude.ByteString
+module ModularPrelude.Module.ByteString
   ( ByteStringModule (..)
   , _Data_ByteString_
   ) where

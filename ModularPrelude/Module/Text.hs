@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module ModularPrelude.Text
+module ModularPrelude.Module.Text
   ( TextModule (..)
   , _Data_Text_
   ) where

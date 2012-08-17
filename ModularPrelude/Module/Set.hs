@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
-module ModularPrelude.Set
+module ModularPrelude.Module.Set
   ( SetModule (..)
   , _Data_Set_
   ) where

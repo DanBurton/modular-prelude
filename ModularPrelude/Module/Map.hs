@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
-module ModularPrelude.Map
+module ModularPrelude.Module.Map
   ( MapModule (..)
   , _Data_Map_
   ) where

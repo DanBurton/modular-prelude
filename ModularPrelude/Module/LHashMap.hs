@@ -1,16 +1,16 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
-module ModularPrelude.HashMap
-  ( HashMapModule (..)
-  , _Data_HashMap_Strict_
+module ModularPrelude.Module.LHashMap
+  ( LHashMapModule (..)
+  , _Data_HashMap_Lazy_
   ) where
 
 
 import ModularPrelude hiding (empty)
-import qualified Data.HashMap.Strict as HashMap
+import qualified Data.HashMap.Lazy as LHashMap
 
 
-data HashMapModule = HashMap
+data LHashMapModule = LHashMap
   { map       :: forall k a b. (a -> b) -> HashMap k a -> HashMap k b
   , filter    :: forall k a. (k -> a -> Bool) -> HashMap k a -> HashMap k a
   , length    :: forall k a. HashMap k a -> Int
@@ -28,25 +28,25 @@ data HashMapModule = HashMap
   }
 
 
-_Data_HashMap_Strict_ :: HashMapModule
-_Data_HashMap_Strict_ = HashMap
-  { map       = HashMap.map
-  , filter    = HashMap.filterWithKey
-  , length    = HashMap.size
-  , singleton = HashMap.singleton
-  , null      = HashMap.null
-  , pack      = HashMap.fromList
-  , unpack    = HashMap.toList
-  , fromList  = HashMap.fromList
-  , toList    = HashMap.toList
-  , lookup    = HashMap.lookup
-  , empty     = HashMap.empty
-  , insert    = HashMap.insert
-  , delete    = HashMap.delete
-  , member    = HashMap.member
+_Data_HashMap_Lazy_ :: LHashMapModule
+_Data_HashMap_Lazy_ = LHashMap
+  { map       = LHashMap.map
+  , filter    = LHashMap.filterWithKey
+  , length    = LHashMap.size
+  , singleton = LHashMap.singleton
+  , null      = LHashMap.null
+  , pack      = LHashMap.fromList
+  , unpack    = LHashMap.toList
+  , fromList  = LHashMap.fromList
+  , toList    = LHashMap.toList
+  , lookup    = LHashMap.lookup
+  , empty     = LHashMap.empty
+  , insert    = LHashMap.insert
+  , delete    = LHashMap.delete
+  , member    = LHashMap.member
   }
 
 
-instance Default HashMapModule where
-  def = _Data_HashMap_Strict_
+instance Default LHashMapModule where
+  def = _Data_HashMap_Lazy_
 

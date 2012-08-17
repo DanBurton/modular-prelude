@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
-module ModularPrelude.List
+module ModularPrelude.Module.List
   ( ListModule (..)
   , _Data_List_
   ) where

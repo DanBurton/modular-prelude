@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
-module ModularPrelude.Vector
+module ModularPrelude.Module.Vector
   ( VectorModule (..)
   , _Data_Vector_
   ) where
