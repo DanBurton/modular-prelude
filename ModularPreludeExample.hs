@@ -1,8 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module ModularPrelude.Import where
-
-
 import           ModularPrelude
 import qualified ModularPrelude.From        as From
 

@@ -8,7 +8,7 @@ module ModularPrelude.Classy
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import Prelude (Read) -- This should be in CorePrelude
 import qualified ClassyPrelude as Classy
 import qualified ClassyPrelude.Classes as Classy
@@ -83,6 +83,7 @@ data ClassyModule = Classy
   , replicate   :: CanReplicate a i l => l -> i -> a
   , fromList    :: CanPack      c i   => [i] -> c
   , toList      :: CanPack      c i   => c -> [i]
+  , empty       :: Monoid w           => w
   , show        :: (Show a, CanPack c Char) => a -> c  
   , readMay     :: (Read b, CanPack a Char) => a -> Maybe b
   , repack      :: (CanPack a i, CanPack b i) => a -> b
@@ -130,6 +131,7 @@ _ClassyPrelude_Classes_ = Classy
   , replicate   = Classy.replicate
   , fromList    = Classy.fromList
   , toList      = Classy.toList
+  , empty       = Classy.empty
   , show        = Classy.show
   , readMay     = Classy.readMay
   , repack      = Classy.repack

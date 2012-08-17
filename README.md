@@ -1,9 +1,8 @@
 Give it a spin! Make sure you have the latest containers, unordered-containers, etc.
 
-    $ cabal install classy-prelude
-    $ git clone git://github.com/DanBurton/modular-prelude.git
-    $ cd modular-prelude
-    $ ghci -XRecordWildCards -XNamedFieldPuns ModularPrelude/Import.hs
+    $ cabal update && cabal install modular-prelude
+    $ wget https://raw.github.com/DanBurton/modular-prelude/master/ModularPreludeExample.hs
+    $ ghci -XRecordWildCards -XNamedFieldPuns ModularPreludeExample.hs
 
 More details soon to come.
 
@@ -25,7 +24,7 @@ Just use `def` if that suits you.
     ghci> length $ filter Data.Char.isAlpha $ pack "Hello, world!"
 
 Warning: apparently doing two "imports" of the same name
-in the same ghci session may will cause some strange error to occur.
+in the same ghci session may cause some strange error to occur.
 I have no idea what the implications of this are yet,
 but don't go trying to use this library in mission-critical code
 until the record system extensions it relies on,
@@ -54,3 +53,7 @@ its corresponding first-class representation.
 That could be a lot of manual labor,
 so it would also be nice to write some code
 to generate such first-class modules automatically.
+I asked a StackOverflow question about this,
+and got a promising answer,
+but I haven't yet looked closely at it.
+http://stackoverflow.com/questions/11571520/reify-a-module-into-a-record
