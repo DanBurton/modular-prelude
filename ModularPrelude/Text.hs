@@ -6,7 +6,7 @@ module ModularPrelude.Text
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import qualified Filesystem.Path.CurrentOS as F

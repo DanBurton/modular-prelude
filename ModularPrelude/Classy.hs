@@ -1,4 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
+{-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
 module ModularPrelude.Classy
@@ -8,8 +9,10 @@ module ModularPrelude.Classy
 
 
 import ModularPrelude
+import Prelude (Read) -- This should be in CorePrelude
+import qualified ClassyPrelude as Classy
 import qualified ClassyPrelude.Classes as Classy
-import ClassyPrelude ()
+import ClassyPrelude () -- Make sure we get all instances
 import ClassyPrelude.Classes
   ( CanMap
   , CanConcatMap
@@ -21,7 +24,6 @@ import ClassyPrelude.Classes
   , CanMapM
   , CanMapM_
   , CanLookup
-  , CanEmpty
   , CanInsert
   , CanDelete
   , CanMember
@@ -32,6 +34,12 @@ import ClassyPrelude.Classes
   , CanAny
   , CanSplitAt
   , CanFold
+  , CanWords
+  , CanSplit
+  , CanStripSuffix
+  , CanIsInfixOf
+  , CanReverse
+  , CanReplicate
   )
 
 
@@ -44,12 +52,9 @@ data ClassyModule = Classy
   , null        :: CanNull      c     => c -> Bool
   , pack        :: CanPack      c i   => [i] -> c
   , unpack      :: CanPack      c i   => c -> [i]
-  , fromList    :: CanPack      c i   => [i] -> c
-  , toList      :: CanPack      c i   => c -> [i]
-  , mapM        :: CanMapM    f i o m => (i -> m o) -> f
-  , mapM_       :: CanMapM_   f i o m => (i -> m o) -> f
+  , mapM        :: CanMapM    f m i o => (i -> m o) -> f
+  , mapM_       :: CanMapM_   f m i   => (i -> m o) -> f
   , lookup      :: CanLookup    c k v => k -> c -> Maybe v
-  , empty       :: CanEmpty     c     => c
   , insert      :: CanInsert    f     => f
   , delete      :: CanDelete    c k   => k -> c -> c
   , member      :: CanMember    c k   => k -> c -> Bool
@@ -63,7 +68,24 @@ data ClassyModule = Classy
   , any         :: CanAny       c i   => (i -> Bool) -> c -> Bool
   , all         :: CanAny       c i   => (i -> Bool) -> c -> Bool
   , splitAt     :: CanSplitAt   c i   => i -> c -> (c, c)
-  , fold        :: CanFold  accum a f => (accum -> a -> accum) -> accum -> f
+  , take        :: CanSplitAt   c i   => i -> c -> c
+  , drop        :: CanSplitAt   c i   => i -> c -> c
+  , fold        :: CanFold  f a accum => (accum -> a -> accum) -> accum -> f
+  , words       :: CanWords       t   => t -> [t]
+  , unwords     :: CanWords       t   => [t] -> t
+  , lines       :: CanWords       t   => t -> [t]
+  , unlines     :: CanWords       t   => [t] -> t
+  , split       :: CanSplit     c i   => (i -> Bool) -> c -> [c]
+  , stripSuffix :: CanStripSuffix a   => a -> a -> Maybe a
+  , isSuffixOf  :: CanStripSuffix a   => a -> a -> Bool
+  , isInfixOf   :: CanIsInfixOf   a   => a -> a -> Bool
+  , reverse     :: CanReverse     a   => a -> a
+  , replicate   :: CanReplicate a i l => l -> i -> a
+  , fromList    :: CanPack      c i   => [i] -> c
+  , toList      :: CanPack      c i   => c -> [i]
+  , show        :: (Show a, CanPack c Char) => a -> c  
+  , readMay     :: (Read b, CanPack a Char) => a -> Maybe b
+  , repack      :: (CanPack a i, CanPack b i) => a -> b
   }
 
 
@@ -77,12 +99,9 @@ _ClassyPrelude_Classes_ = Classy
   , null        = Classy.null
   , pack        = Classy.pack
   , unpack      = Classy.unpack
-  , fromList    = Classy.pack
-  , toList      = Classy.unpack
   , mapM        = Classy.mapM
   , mapM_       = Classy.mapM_
   , lookup      = Classy.lookup
-  , empty       = Classy.empty
   , insert      = Classy.insert
   , delete      = Classy.delete
   , member      = Classy.member
@@ -96,7 +115,24 @@ _ClassyPrelude_Classes_ = Classy
   , any         = Classy.any
   , all         = Classy.all
   , splitAt     = Classy.splitAt
+  , take        = Classy.take
+  , drop        = Classy.drop
   , fold        = Classy.fold
+  , words       = Classy.words
+  , unwords     = Classy.unwords
+  , lines       = Classy.lines
+  , unlines     = Classy.unlines
+  , split       = Classy.split
+  , stripSuffix = Classy.stripSuffix
+  , isSuffixOf  = Classy.isSuffixOf
+  , isInfixOf   = Classy.isInfixOf
+  , reverse     = Classy.reverse
+  , replicate   = Classy.replicate
+  , fromList    = Classy.fromList
+  , toList      = Classy.toList
+  , show        = Classy.show
+  , readMay     = Classy.readMay
+  , repack      = Classy.repack
   }
 
 

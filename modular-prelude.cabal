@@ -1,5 +1,5 @@
 name:                modular-prelude
-version:             0.1.0.0
+version:             0.2.0.0
 synopsis:            A new Prelude featuring first class modules
 
 homepage:            https://github.com/DanBurton/modular-prelude#readme
@@ -32,8 +32,8 @@ library
                      , ModularPrelude.HashMap
 
   build-depends:       base==4.*
-                     , basic-prelude==0.1.0.*
-                     , classy-prelude==0.1.*
+                     , basic-prelude==0.2.0.*
+                     , classy-prelude==0.2.*
                      , data-default==0.5.0.*
                      , system-filepath==0.4.*
                      , hashable

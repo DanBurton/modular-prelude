@@ -6,25 +6,25 @@ module ModularPrelude.LHashMap
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import qualified Data.HashMap.Lazy as LHashMap
 
 
 data LHashMapModule = LHashMap
-  { map       :: forall k a b. (a -> b) -> LHashMap k a -> LHashMap k b
-  , filter    :: forall k a. (k -> a -> Bool) -> LHashMap k a -> LHashMap k a
-  , length    :: forall k a. LHashMap k a -> Int
-  , singleton :: forall k a. Hashable k => k -> a -> LHashMap k a
-  , null      :: forall k a. LHashMap k a -> Bool
-  , pack      :: forall k a. (Eq k, Hashable k) => [(k, a)] -> LHashMap k a
-  , unpack    :: forall k a. LHashMap k a -> [(k, a)]
-  , fromList  :: forall k a. (Eq k, Hashable k) => [(k, a)] -> LHashMap k a
-  , toList    :: forall k a. LHashMap k a -> [(k, a)]
-  , lookup    :: forall k a. (Eq k, Hashable k) => k -> LHashMap k a -> Maybe a
-  , empty     :: forall k a. LHashMap k a
-  , insert    :: forall k a. (Eq k, Hashable k) => k -> a -> LHashMap k a -> LHashMap k a
-  , delete    :: forall k a. (Eq k, Hashable k) => k -> LHashMap k a -> LHashMap k a
-  , member    :: forall k a. (Eq k, Hashable k) => k -> LHashMap k a -> Bool
+  { map       :: forall k a b. (a -> b) -> HashMap k a -> HashMap k b
+  , filter    :: forall k a. (k -> a -> Bool) -> HashMap k a -> HashMap k a
+  , length    :: forall k a. HashMap k a -> Int
+  , singleton :: forall k a. Hashable k => k -> a -> HashMap k a
+  , null      :: forall k a. HashMap k a -> Bool
+  , pack      :: forall k a. (Eq k, Hashable k) => [(k, a)] -> HashMap k a
+  , unpack    :: forall k a. HashMap k a -> [(k, a)]
+  , fromList  :: forall k a. (Eq k, Hashable k) => [(k, a)] -> HashMap k a
+  , toList    :: forall k a. HashMap k a -> [(k, a)]
+  , lookup    :: forall k a. (Eq k, Hashable k) => k -> HashMap k a -> Maybe a
+  , empty     :: forall k a. HashMap k a
+  , insert    :: forall k a. (Eq k, Hashable k) => k -> a -> HashMap k a -> HashMap k a
+  , delete    :: forall k a. (Eq k, Hashable k) => k -> HashMap k a -> HashMap k a
+  , member    :: forall k a. (Eq k, Hashable k) => k -> HashMap k a -> Bool
   }
 
 

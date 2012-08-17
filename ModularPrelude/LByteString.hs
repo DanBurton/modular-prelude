@@ -6,7 +6,7 @@ module ModularPrelude.LByteString
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import qualified Data.ByteString.Lazy as L
 import qualified Filesystem.Path.CurrentOS as F
 

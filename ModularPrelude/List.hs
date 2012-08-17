@@ -6,7 +6,7 @@ module ModularPrelude.List
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import qualified Data.List as List
 
 

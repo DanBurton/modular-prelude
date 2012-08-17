@@ -6,7 +6,7 @@ module ModularPrelude.HashMap
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import qualified Data.HashMap.Strict as HashMap
 
 

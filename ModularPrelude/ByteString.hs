@@ -6,7 +6,7 @@ module ModularPrelude.ByteString
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import qualified Data.ByteString as S
 import qualified Filesystem.Path.CurrentOS as F
 

@@ -6,7 +6,7 @@ module ModularPrelude.Vector
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import qualified Data.Vector as V
 
 

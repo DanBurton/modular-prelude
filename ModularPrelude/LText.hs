@@ -6,7 +6,7 @@ module ModularPrelude.LText
   ) where
 
 
-import ModularPrelude
+import ModularPrelude hiding (empty)
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.IO as TL
 import qualified Filesystem.Path.CurrentOS as F
