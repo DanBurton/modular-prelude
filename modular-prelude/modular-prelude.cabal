@@ -1,5 +1,5 @@
 name:                modular-prelude
-version:             0.3.0.0
+version:             0.4.0.0
 synopsis:            A new Prelude featuring first class modules
 
 homepage:            https://github.com/DanBurton/modular-prelude#readme
@@ -17,29 +17,36 @@ library
 
                      ,   ModularPrelude.From
 
-                     ,     ModularPrelude.Module.FilePath
-                     ,     ModularPrelude.Module.Set
                      ,     ModularPrelude.Module.List
-                     ,     ModularPrelude.Module.LByteString
-                     ,     ModularPrelude.Module.Vector
-                     ,     ModularPrelude.Module.HashSet
-                     ,     ModularPrelude.Module.UVector
-                     ,     ModularPrelude.Module.Text
-                     ,     ModularPrelude.Module.Map
-                     ,     ModularPrelude.Module.LHashMap
-                     ,     ModularPrelude.Module.ByteString
-                     ,     ModularPrelude.Module.LText
-                     ,     ModularPrelude.Module.HashMap
 
-  build-depends:       base==4.*
-                     , basic-prelude==0.2.0.*
-                     , data-default==0.5.0.*
-                     , system-filepath==0.4.*
+                     ,     ModularPrelude.Module.FilePath
+
+                     ,     ModularPrelude.Module.ByteString
+                     ,     ModularPrelude.Module.LByteString
+
+                     ,     ModularPrelude.Module.Text
+                     ,     ModularPrelude.Module.LText
+
+                     ,     ModularPrelude.Module.Set
+                     ,     ModularPrelude.Module.Map
+
+                     ,     ModularPrelude.Module.HashMap
+                     ,     ModularPrelude.Module.LHashMap
+                     ,     ModularPrelude.Module.HashSet
+
+                     ,     ModularPrelude.Module.Vector
+                     ,     ModularPrelude.Module.UVector
+
+  build-depends:       basic-prelude            >= 0.2.0  && < 0.2.1
+                     , data-default             >= 0.5.0  && < 0.5.1
+
                      , hashable
-                     , bytestring
-                     , text
-                     , transformers
-                     , containers
-                     , unordered-containers
-                     , vector
+
+                     , base                     >= 4.3    && < 4.6
+                     , system-filepath          >= 0.4    && < 0.5
+                     , bytestring               >= 0.9    && < 0.10
+                     , text                     >= 0.11   && < 0.12
+                     , containers               >= 0.4    && < 0.6
+                     , unordered-containers     >= 0.2    && < 0.3
+                     , vector                   >= 0.9    && < 0.10
 

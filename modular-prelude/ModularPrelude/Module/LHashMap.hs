@@ -13,7 +13,7 @@ module ModularPrelude.Module.LHashMap
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import qualified Data.HashMap.Lazy as LHashMap
 
 

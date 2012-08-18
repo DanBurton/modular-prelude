@@ -10,7 +10,7 @@ module ModularPrelude.Module.LByteString
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import qualified Data.ByteString.Lazy as LByteString
 import qualified Filesystem.Path.CurrentOS as FilePath
 

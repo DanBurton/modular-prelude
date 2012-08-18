@@ -10,7 +10,7 @@ module ModularPrelude.Module.LText
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import qualified Data.Text.Lazy as LText
 import qualified Data.Text.Lazy.IO as LText
 import qualified Filesystem.Path.CurrentOS as FilePath

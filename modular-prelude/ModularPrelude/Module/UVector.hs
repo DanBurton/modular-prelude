@@ -10,7 +10,7 @@ module ModularPrelude.Module.UVector
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import qualified Data.Vector.Unboxed as UVector
 
 

@@ -10,7 +10,7 @@ module ModularPrelude.Module.Text
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
 import qualified Filesystem.Path.CurrentOS as FilePath

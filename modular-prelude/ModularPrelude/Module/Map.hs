@@ -10,7 +10,7 @@ module ModularPrelude.Module.Map
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import qualified Data.Map as Map
 
 

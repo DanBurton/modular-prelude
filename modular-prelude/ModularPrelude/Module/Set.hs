@@ -10,7 +10,7 @@ module ModularPrelude.Module.Set
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import qualified Data.Set as Set
 
 

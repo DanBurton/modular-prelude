@@ -10,7 +10,7 @@ module ModularPrelude.Module.HashSet
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import qualified Data.HashSet as HashSet
 
 

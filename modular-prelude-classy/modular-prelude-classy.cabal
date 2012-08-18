@@ -1,5 +1,5 @@
 name:                modular-prelude-classy
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            Reifying ClassyPrelude a la ModularPrelude
 
 homepage:            https://github.com/DanBurton/modular-prelude#readme
@@ -19,5 +19,5 @@ library
 
   build-depends:       base==4.*
                      , classy-prelude==0.2.*
-                     , modular-prelude==0.3.*
+                     , modular-prelude==0.4.*
 

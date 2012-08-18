@@ -12,7 +12,7 @@ module ModularPrelude.Module.Classy
   ) where
 
 
-import ModularPrelude hiding (empty)
+import ModularPrelude
 import ModularPrelude.Classy
 
 import qualified ClassyPrelude as Classy
