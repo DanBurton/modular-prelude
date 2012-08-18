@@ -34,10 +34,8 @@ module ModularPrelude.Classy
   , C.CanIsInfixOf
   , C.CanReverse
   , C.CanReplicate
-  , Prelude.Read -- Should be in CorePrelude
   ) where
 
 
-import qualified Prelude
 import qualified ClassyPrelude.Classes as C
 

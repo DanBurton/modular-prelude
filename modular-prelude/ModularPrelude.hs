@@ -9,8 +9,11 @@
 module ModularPrelude
     ( module CorePrelude
     , module Data.Default
+    , Prelude.Read -- should be in CorePrelude
     ) where
 
 import CorePrelude
 import Data.Default
+
+import qualified Prelude
 

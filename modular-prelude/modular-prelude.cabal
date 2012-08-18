@@ -31,13 +31,8 @@ library
                      ,     ModularPrelude.Module.LText
                      ,     ModularPrelude.Module.HashMap
 
-                     ,   ModularPrelude.Classy
-                     ,     ModularPrelude.From.Classy
-                     ,     ModularPrelude.Module.Classy
-
   build-depends:       base==4.*
                      , basic-prelude==0.2.0.*
-                     , classy-prelude==0.2.*
                      , data-default==0.5.0.*
                      , system-filepath==0.4.*
                      , hashable
@@ -47,3 +42,4 @@ library
                      , containers
                      , unordered-containers
                      , vector
+
