@@ -1,6 +1,6 @@
 Give it a spin! Make sure you have the latest containers, unordered-containers, etc.
 
-    $ cabal update && cabal install modular-prelude
+    $ cabal update && cabal install modular-prelude-classy
     $ wget https://raw.github.com/DanBurton/modular-prelude/master/ModularPreludeExample.hs
     $ ghci -XRecordWildCards -XNamedFieldPuns ModularPreludeExample.hs
 
@@ -8,19 +8,19 @@ More details soon to come.
 
 But try this:
 
-    ghci> let Import.Map{empty,insert} = From._Data_Map_
+    ghci> let Module.Map{empty,insert} = From._Data_Map_
     ghci> :t empty
 
-No, most of it doesn't rely on classy-prelude.
-Sorry for forcing that dependency on you,
-but check it out:
+You can install just modular-prelude
+if you don't plan on using the Classy module.
+But check it out:
 
-    ghci> let Import.Classy{..} = From._ClassyPrelude_Classes_
+    ghci> let Module.Classy{..} = From._ClassyPrelude_Classes_
 
 The right-hand side of the imports doesn't have to be that verbose.
 Just use `def` if that suits you.
 
-    ghci> let Import.Text{length, filter, pack} = def
+    ghci> let Module.Text{length, filter, pack} = def
     ghci> length $ filter Data.Char.isAlpha $ pack "Hello, world!"
 
 Warning: apparently doing two "imports" of the same name
@@ -47,7 +47,7 @@ But I'd really like this whole environment to be bundled
 and easily accessible, without having to copy/paste 40 lines of code.
 
 I've currently modeled the "modules" after ClassyPrelude,
-though I think that in the future I'll just include
+though in the future I'll just include
 the entirety of the a module in
 its corresponding first-class representation.
 That could be a lot of manual labor,
