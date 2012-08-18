@@ -1,14 +1,18 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
+-- | This module provides a first-class version
+-- of the "Data.ByteString.Lazy" module.
 module ModularPrelude.Module.LByteString
-  ( LByteStringModule (..)
-  , _Data_ByteString_Lazy_
+  ( -- * Module interface
+    LByteStringModule (..)
+    -- * Module contents
+  , LByteStringImplements (..)
   ) where
 
 
 import ModularPrelude hiding (empty)
-import qualified Data.ByteString.Lazy as L
-import qualified Filesystem.Path.CurrentOS as F
+import qualified Data.ByteString.Lazy as LByteString
+import qualified Filesystem.Path.CurrentOS as FilePath
 
 
 data LByteStringModule = LByteString
@@ -33,27 +37,30 @@ data LByteStringModule = LByteString
   }
 
 
-_Data_ByteString_Lazy_ :: LByteStringModule
-_Data_ByteString_Lazy_ = LByteString
-  { map       = L.map
-  , concatMap = L.concatMap
-  , filter    = L.filter
-  , length    = L.length
-  , singleton = L.singleton
-  , null      = L.null
-  , pack      = L.pack
-  , unpack    = L.unpack
-  , empty     = L.empty
-  , readFile  = L.readFile . F.encodeString
-  , writeFile = L.writeFile . F.encodeString
-  , break     = L.break
-  , span      = L.span
-  , dropWhile = L.dropWhile
-  , takeWhile = L.takeWhile
-  , any       = L.any
-  , all       = L.all
-  , splitAt   = L.splitAt
-  }
+class LByteStringImplements interface where
+  _Data_ByteString_Lazy_ :: interface
+
+instance LByteStringImplements LByteStringModule where
+  _Data_ByteString_Lazy_ = LByteString
+    { map       = LByteString.map
+    , concatMap = LByteString.concatMap
+    , filter    = LByteString.filter
+    , length    = LByteString.length
+    , singleton = LByteString.singleton
+    , null      = LByteString.null
+    , pack      = LByteString.pack
+    , unpack    = LByteString.unpack
+    , empty     = LByteString.empty
+    , readFile  = LByteString.readFile . FilePath.encodeString
+    , writeFile = LByteString.writeFile . FilePath.encodeString
+    , break     = LByteString.break
+    , span      = LByteString.span
+    , dropWhile = LByteString.dropWhile
+    , takeWhile = LByteString.takeWhile
+    , any       = LByteString.any
+    , all       = LByteString.all
+    , splitAt   = LByteString.splitAt
+    }
 
 
 instance Default LByteStringModule where

@@ -1,8 +1,12 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides a first-class version
+-- of the "Data.HashSet" module.
 module ModularPrelude.Module.HashSet
-  ( HashSetModule (..)
-  , _Data_HashSet_
+  ( -- * Module interface
+    HashSetModule (..)
+    -- * Module contents
+  , HashSetImplements (..)
   ) where
 
 
@@ -27,22 +31,25 @@ data HashSetModule = HashSet
   }
 
 
-_Data_HashSet_ :: HashSetModule
-_Data_HashSet_ = HashSet
-  { map         = HashSet.map
-  , filter      = HashSet.filter
-  , length      = HashSet.size
-  , singleton   = HashSet.singleton
-  , null        = HashSet.null
-  , pack        = HashSet.fromList
-  , unpack      = HashSet.toList
-  , fromList    = HashSet.fromList
-  , toList      = HashSet.toList
-  , empty       = HashSet.empty
-  , insert      = HashSet.insert
-  , delete      = HashSet.delete
-  , member      = HashSet.member
-  }
+class HashSetImplements interface where
+  _Data_HashSet_ :: interface
+
+instance HashSetImplements HashSetModule where
+  _Data_HashSet_ = HashSet
+    { map         = HashSet.map
+    , filter      = HashSet.filter
+    , length      = HashSet.size
+    , singleton   = HashSet.singleton
+    , null        = HashSet.null
+    , pack        = HashSet.fromList
+    , unpack      = HashSet.toList
+    , fromList    = HashSet.fromList
+    , toList      = HashSet.toList
+    , empty       = HashSet.empty
+    , insert      = HashSet.insert
+    , delete      = HashSet.delete
+    , member      = HashSet.member
+    }
 
 
 instance Default HashSetModule where

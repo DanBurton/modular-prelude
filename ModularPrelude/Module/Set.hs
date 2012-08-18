@@ -1,8 +1,12 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides a first-class version
+-- of the "Data.Set" module.
 module ModularPrelude.Module.Set
-  ( SetModule (..)
-  , _Data_Set_
+  ( -- * Module interface
+    SetModule (..)
+    -- * Module contents
+  , SetImplements (..)
   ) where
 
 
@@ -27,22 +31,25 @@ data SetModule = Set
   }
 
 
-_Data_Set_ :: SetModule
-_Data_Set_ = Set
-  { map         = Set.map
-  , filter      = Set.filter
-  , length      = Set.size
-  , singleton   = Set.singleton
-  , null        = Set.null
-  , pack        = Set.fromList
-  , unpack      = Set.toList
-  , fromList    = Set.fromList
-  , toList      = Set.toList
-  , empty       = Set.empty
-  , insert      = Set.insert
-  , delete      = Set.delete
-  , member      = Set.member
-  }
+class SetImplements interface where
+  _Data_Set_ :: interface
+
+instance SetImplements SetModule where
+  _Data_Set_ = Set
+    { map         = Set.map
+    , filter      = Set.filter
+    , length      = Set.size
+    , singleton   = Set.singleton
+    , null        = Set.null
+    , pack        = Set.fromList
+    , unpack      = Set.toList
+    , fromList    = Set.fromList
+    , toList      = Set.toList
+    , empty       = Set.empty
+    , insert      = Set.insert
+    , delete      = Set.delete
+    , member      = Set.member
+    }
 
 
 instance Default SetModule where

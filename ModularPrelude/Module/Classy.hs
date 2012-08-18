@@ -2,9 +2,13 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
+-- | This module provides the first-class version
+-- of the "ClassyPrelude" module.
 module ModularPrelude.Module.Classy
-  ( ClassyModule (..)
-  , _ClassyPrelude_
+  ( -- * Module interface
+    ClassyModule (..)
+    -- * Module contents
+  , ClassyPreludeImplements (..)
   ) where
 
 
@@ -61,53 +65,57 @@ data ClassyModule = Classy
   }
 
 
-_ClassyPrelude_ :: ClassyModule
-_ClassyPrelude_ = Classy
-  { map         = Classy.map
-  , concatMap   = Classy.concatMap
-  , filter      = Classy.filter
-  , length      = Classy.length
-  , singleton   = Classy.singleton
-  , null        = Classy.null
-  , pack        = Classy.pack
-  , unpack      = Classy.unpack
-  , mapM        = Classy.mapM
-  , mapM_       = Classy.mapM_
-  , lookup      = Classy.lookup
-  , insert      = Classy.insert
-  , delete      = Classy.delete
-  , member      = Classy.member
-  , readFile    = Classy.readFile
-  , writeFile   = Classy.writeFile
-  , stripPrefix = Classy.stripPrefix
-  , break       = Classy.break
-  , span        = Classy.span
-  , dropWhile   = Classy.dropWhile
-  , takeWhile   = Classy.takeWhile
-  , any         = Classy.any
-  , all         = Classy.all
-  , splitAt     = Classy.splitAt
-  , take        = Classy.take
-  , drop        = Classy.drop
-  , fold        = Classy.fold
-  , words       = Classy.words
-  , unwords     = Classy.unwords
-  , lines       = Classy.lines
-  , unlines     = Classy.unlines
-  , split       = Classy.split
-  , stripSuffix = Classy.stripSuffix
-  , isSuffixOf  = Classy.isSuffixOf
-  , isInfixOf   = Classy.isInfixOf
-  , reverse     = Classy.reverse
-  , replicate   = Classy.replicate
-  , fromList    = Classy.fromList
-  , toList      = Classy.toList
-  , empty       = Classy.empty
-  , show        = Classy.show
-  , readMay     = Classy.readMay
-  , repack      = Classy.repack
-  }
+class ClassyPreludeImplements interface where
+  _ClassyPrelude_ :: interface
+
+instance ClassyPreludeImplements ClassyModule where
+  _ClassyPrelude_ = Classy
+    { map         = Classy.map
+    , concatMap   = Classy.concatMap
+    , filter      = Classy.filter
+    , length      = Classy.length
+    , singleton   = Classy.singleton
+    , null        = Classy.null
+    , pack        = Classy.pack
+    , unpack      = Classy.unpack
+    , mapM        = Classy.mapM
+    , mapM_       = Classy.mapM_
+    , lookup      = Classy.lookup
+    , insert      = Classy.insert
+    , delete      = Classy.delete
+    , member      = Classy.member
+    , readFile    = Classy.readFile
+    , writeFile   = Classy.writeFile
+    , stripPrefix = Classy.stripPrefix
+    , break       = Classy.break
+    , span        = Classy.span
+    , dropWhile   = Classy.dropWhile
+    , takeWhile   = Classy.takeWhile
+    , any         = Classy.any
+    , all         = Classy.all
+    , splitAt     = Classy.splitAt
+    , take        = Classy.take
+    , drop        = Classy.drop
+    , fold        = Classy.fold
+    , words       = Classy.words
+    , unwords     = Classy.unwords
+    , lines       = Classy.lines
+    , unlines     = Classy.unlines
+    , split       = Classy.split
+    , stripSuffix = Classy.stripSuffix
+    , isSuffixOf  = Classy.isSuffixOf
+    , isInfixOf   = Classy.isInfixOf
+    , reverse     = Classy.reverse
+    , replicate   = Classy.replicate
+    , fromList    = Classy.fromList
+    , toList      = Classy.toList
+    , empty       = Classy.empty
+    , show        = Classy.show
+    , readMay     = Classy.readMay
+    , repack      = Classy.repack
+    }
 
 
 instance Default ClassyModule where
   def = _ClassyPrelude_
+

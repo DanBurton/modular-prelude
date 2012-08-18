@@ -1,8 +1,12 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides a first-class version
+-- of the "Data.List" module.
 module ModularPrelude.Module.List
-  ( ListModule (..)
-  , _Data_List_
+  ( -- * Module interface
+    ListModule (..)
+    -- * Module contents
+  , ListImplements (..)
   ) where
 
 
@@ -38,33 +42,36 @@ data ListModule = List
   }
 
 
-_Data_List_ :: ListModule
-_Data_List_ = List
-  { map         = List.map
-  , concatMap   = List.concatMap
-  , filter      = List.filter
-  , length      = List.length
-  , singleton   = return
-  , null        = List.null
-  , pack        = id
-  , unpack      = id
-  , fromList    = id
-  , toList      = id
-  , lookup      = List.lookup
-  , empty       = []
-  , insert      = (:)
-  , delete      = List.delete
-  , member      = List.elem
-  , stripPrefix = List.stripPrefix
-  , break       = List.break
-  , span        = List.span
-  , dropWhile   = List.dropWhile
-  , takeWhile   = List.takeWhile
-  , any         = List.any
-  , all         = List.all
-  , splitAt     = List.splitAt
-  , fold        = List.foldl'
-  }
+class ListImplements interface where
+  _Data_List_ :: interface
+
+instance ListImplements ListModule where
+  _Data_List_ = List
+    { map         = List.map
+    , concatMap   = List.concatMap
+    , filter      = List.filter
+    , length      = List.length
+    , singleton   = return
+    , null        = List.null
+    , pack        = id
+    , unpack      = id
+    , fromList    = id
+    , toList      = id
+    , lookup      = List.lookup
+    , empty       = []
+    , insert      = (:) -- List.insert instead?
+    , delete      = List.delete
+    , member      = List.elem
+    , stripPrefix = List.stripPrefix
+    , break       = List.break
+    , span        = List.span
+    , dropWhile   = List.dropWhile
+    , takeWhile   = List.takeWhile
+    , any         = List.any
+    , all         = List.all
+    , splitAt     = List.splitAt
+    , fold        = List.foldl'
+    }
 
 
 instance Default ListModule where

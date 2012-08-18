@@ -1,8 +1,12 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides a first-class version
+-- of the "Data.Map" module.
 module ModularPrelude.Module.Map
-  ( MapModule (..)
-  , _Data_Map_
+  ( -- * Module interface
+    MapModule (..)
+    -- * Module contents
+  , MapImplements (..)
   ) where
 
 
@@ -28,23 +32,26 @@ data MapModule = Map
   }
 
 
-_Data_Map_ :: MapModule
-_Data_Map_ = Map
-  { map       = Map.map
-  , filter    = Map.filterWithKey
-  , length    = Map.size
-  , singleton = Map.singleton
-  , null      = Map.null
-  , pack      = Map.fromList
-  , unpack    = Map.toList
-  , fromList  = Map.fromList
-  , toList    = Map.toList
-  , lookup    = Map.lookup
-  , empty     = Map.empty
-  , insert    = Map.insert
-  , delete    = Map.delete
-  , member    = Map.member
-  }
+class MapImplements interface where
+  _Data_Map_ :: interface
+
+instance MapImplements MapModule where
+  _Data_Map_ = Map
+    { map       = Map.map
+    , filter    = Map.filterWithKey
+    , length    = Map.size
+    , singleton = Map.singleton
+    , null      = Map.null
+    , pack      = Map.fromList
+    , unpack    = Map.toList
+    , fromList  = Map.fromList
+    , toList    = Map.toList
+    , lookup    = Map.lookup
+    , empty     = Map.empty
+    , insert    = Map.insert
+    , delete    = Map.delete
+    , member    = Map.member
+    }
 
 
 instance Default MapModule where

@@ -1,15 +1,19 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
+-- | This module provides a first-class version
+-- of the "Data.Text" module.
 module ModularPrelude.Module.Text
-  ( TextModule (..)
-  , _Data_Text_
+  ( -- * Module interface
+    TextModule (..)
+    -- * Module contents
+  , TextImplements (..)
   ) where
 
 
 import ModularPrelude hiding (empty)
-import qualified Data.Text as T
-import qualified Data.Text.IO as T
-import qualified Filesystem.Path.CurrentOS as F
+import qualified Data.Text as Text
+import qualified Data.Text.IO as Text
+import qualified Filesystem.Path.CurrentOS as FilePath
 
 
 data TextModule = Text
@@ -34,27 +38,30 @@ data TextModule = Text
   }
 
 
-_Data_Text_ :: TextModule
-_Data_Text_ = Text
-  { map       = T.map
-  , concatMap = T.concatMap
-  , filter    = T.filter
-  , length    = T.length
-  , singleton = T.singleton
-  , null      = T.null
-  , pack      = T.pack
-  , unpack    = T.unpack
-  , empty     = T.empty
-  , readFile  = T.readFile . F.encodeString
-  , writeFile = T.writeFile . F.encodeString
-  , break     = T.break
-  , span      = T.span
-  , dropWhile = T.dropWhile
-  , takeWhile = T.takeWhile
-  , any       = T.any
-  , all       = T.all
-  , splitAt   = T.splitAt
-  }
+class TextImplements interface where
+  _Data_Text_ :: interface
+
+instance TextImplements TextModule where
+  _Data_Text_ = Text
+    { map       = Text.map
+    , concatMap = Text.concatMap
+    , filter    = Text.filter
+    , length    = Text.length
+    , singleton = Text.singleton
+    , null      = Text.null
+    , pack      = Text.pack
+    , unpack    = Text.unpack
+    , empty     = Text.empty
+    , readFile  = Text.readFile . FilePath.encodeString
+    , writeFile = Text.writeFile . FilePath.encodeString
+    , break     = Text.break
+    , span      = Text.span
+    , dropWhile = Text.dropWhile
+    , takeWhile = Text.takeWhile
+    , any       = Text.any
+    , all       = Text.all
+    , splitAt   = Text.splitAt
+    }
 
 
 instance Default TextModule where

@@ -1,14 +1,18 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
+-- | This module provides a first-class version
+-- of the "Data.ByteString" module.
 module ModularPrelude.Module.ByteString
-  ( ByteStringModule (..)
-  , _Data_ByteString_
+  ( -- * Module interface
+    ByteStringModule (..)
+    -- * Module contents
+  , ByteStringImplements (..)
   ) where
 
 
 import ModularPrelude hiding (empty)
-import qualified Data.ByteString as S
-import qualified Filesystem.Path.CurrentOS as F
+import qualified Data.ByteString as ByteString
+import qualified Filesystem.Path.CurrentOS as FilePath
 
 
 data ByteStringModule = ByteString
@@ -33,27 +37,30 @@ data ByteStringModule = ByteString
   }
 
 
-_Data_ByteString_ :: ByteStringModule
-_Data_ByteString_ = ByteString
-  { map       = S.map
-  , concatMap = S.concatMap
-  , filter    = S.filter
-  , length    = S.length
-  , singleton = S.singleton
-  , null      = S.null
-  , pack      = S.pack
-  , unpack    = S.unpack
-  , empty     = S.empty
-  , readFile  = S.readFile . F.encodeString
-  , writeFile = S.writeFile . F.encodeString
-  , break     = S.break
-  , span      = S.span
-  , dropWhile = S.dropWhile
-  , takeWhile = S.takeWhile
-  , any       = S.any
-  , all       = S.all
-  , splitAt   = S.splitAt
-  }
+class ByteStringImplements interface where
+  _Data_ByteString_ :: interface
+
+instance ByteStringImplements ByteStringModule where
+  _Data_ByteString_ = ByteString
+    { map       = ByteString.map
+    , concatMap = ByteString.concatMap
+    , filter    = ByteString.filter
+    , length    = ByteString.length
+    , singleton = ByteString.singleton
+    , null      = ByteString.null
+    , pack      = ByteString.pack
+    , unpack    = ByteString.unpack
+    , empty     = ByteString.empty
+    , readFile  = ByteString.readFile . FilePath.encodeString
+    , writeFile = ByteString.writeFile . FilePath.encodeString
+    , break     = ByteString.break
+    , span      = ByteString.span
+    , dropWhile = ByteString.dropWhile
+    , takeWhile = ByteString.takeWhile
+    , any       = ByteString.any
+    , all       = ByteString.all
+    , splitAt   = ByteString.splitAt
+    }
 
 
 instance Default ByteStringModule where

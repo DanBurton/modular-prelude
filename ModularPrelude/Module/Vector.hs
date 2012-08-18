@@ -1,13 +1,17 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides a first-class version
+-- of the "Data.Vector" module.
 module ModularPrelude.Module.Vector
-  ( VectorModule (..)
-  , _Data_Vector_
+  ( -- * Module interface
+    VectorModule (..)
+    -- * Module contents
+  , VectorImplements (..)
   ) where
 
 
 import ModularPrelude hiding (empty)
-import qualified Data.Vector as V
+import qualified Data.Vector as Vector
 
 
 data VectorModule = Vector
@@ -27,40 +31,43 @@ data VectorModule = Vector
   , member    :: forall a. Eq a => a -> Vector a -> Bool
   , break     :: forall a. (a -> Bool) -> Vector a -> (Vector a, Vector a)
   , span      :: forall a. (a -> Bool) -> Vector a -> (Vector a, Vector a)
-  , dropWhile :: forall a.(a -> Bool) -> Vector a -> Vector a
-  , takeWhile :: forall a.(a -> Bool) -> Vector a -> Vector a
-  , any       :: forall a.(a -> Bool) -> Vector a -> Bool
-  , all       :: forall a.(a -> Bool) -> Vector a -> Bool
-  , splitAt   :: forall a.Int -> Vector a -> (Vector a, Vector a)
+  , dropWhile :: forall a. (a -> Bool) -> Vector a -> Vector a
+  , takeWhile :: forall a. (a -> Bool) -> Vector a -> Vector a
+  , any       :: forall a. (a -> Bool) -> Vector a -> Bool
+  , all       :: forall a. (a -> Bool) -> Vector a -> Bool
+  , splitAt   :: forall a. Int -> Vector a -> (Vector a, Vector a)
   , fold      :: forall a b. (a -> b -> a) -> a -> Vector b -> a
   }
 
 
-_Data_Vector_ :: VectorModule
-_Data_Vector_ = Vector
-  { map       = V.map
-  , concatMap = V.concatMap
-  , filter    = V.filter
-  , length    = V.length
-  , singleton = V.singleton
-  , null      = V.null
-  , pack      = V.fromList
-  , unpack    = V.toList
-  , fromList  = V.fromList
-  , toList    = V.toList
-  , mapM      = V.mapM
-  , mapM_     = V.mapM_
-  , empty     = V.empty
-  , member    = V.any . (==)
-  , break     = V.break
-  , span      = V.span
-  , dropWhile = V.dropWhile
-  , takeWhile = V.takeWhile
-  , any       = V.any
-  , all       = V.all
-  , splitAt   = V.splitAt
-  , fold      = V.foldl'
-  }
+class VectorImplements interface where
+  _Data_Vector_ :: interface
+
+instance VectorImplements VectorModule where
+  _Data_Vector_ = Vector
+    { map       = Vector.map
+    , concatMap = Vector.concatMap
+    , filter    = Vector.filter
+    , length    = Vector.length
+    , singleton = Vector.singleton
+    , null      = Vector.null
+    , pack      = Vector.fromList
+    , unpack    = Vector.toList
+    , fromList  = Vector.fromList
+    , toList    = Vector.toList
+    , mapM      = Vector.mapM
+    , mapM_     = Vector.mapM_
+    , empty     = Vector.empty
+    , member    = Vector.any . (==)
+    , break     = Vector.break
+    , span      = Vector.span
+    , dropWhile = Vector.dropWhile
+    , takeWhile = Vector.takeWhile
+    , any       = Vector.any
+    , all       = Vector.all
+    , splitAt   = Vector.splitAt
+    , fold      = Vector.foldl'
+    }
 
 
 instance Default VectorModule where

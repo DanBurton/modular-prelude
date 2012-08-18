@@ -1,14 +1,17 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides a first-class version
+-- of the "Data.Vector.Unboxed" module.
 module ModularPrelude.Module.UVector
-  ( UVectorModule (..)
-  , _Data_Vector_Unboxed_
-  , UVector
+  ( -- * Module interface
+    UVectorModule (..)
+    -- * Module contents
+  , UVectorImplements (..)
   ) where
 
 
 import ModularPrelude hiding (empty)
-import qualified Data.Vector.Unboxed as UV
+import qualified Data.Vector.Unboxed as UVector
 
 
 data UVectorModule = UVector
@@ -42,31 +45,34 @@ data UVectorModule = UVector
   }
 
 
-_Data_Vector_Unboxed_ :: UVectorModule
-_Data_Vector_Unboxed_ = UVector
-  { map       = UV.map
-  , concatMap = UV.concatMap
-  , filter    = UV.filter
-  , length    = UV.length
-  , singleton = UV.singleton
-  , null      = UV.null
-  , pack      = UV.fromList
-  , unpack    = UV.toList
-  , fromList  = UV.fromList
-  , toList    = UV.toList
-  , mapM      = UV.mapM
-  , mapM_     = UV.mapM_
-  , empty     = UV.empty
-  , member    = UV.any . (==)
-  , break     = UV.break
-  , span      = UV.span
-  , dropWhile = UV.dropWhile
-  , takeWhile = UV.takeWhile
-  , any       = UV.any
-  , all       = UV.all
-  , splitAt   = UV.splitAt
-  , fold      = UV.foldl'
-  }
+class UVectorImplements interface where
+  _Data_Vector_Unboxed_ :: interface
+
+instance UVectorImplements UVectorModule where
+  _Data_Vector_Unboxed_ = UVector
+    { map       = UVector.map
+    , concatMap = UVector.concatMap
+    , filter    = UVector.filter
+    , length    = UVector.length
+    , singleton = UVector.singleton
+    , null      = UVector.null
+    , pack      = UVector.fromList
+    , unpack    = UVector.toList
+    , fromList  = UVector.fromList
+    , toList    = UVector.toList
+    , mapM      = UVector.mapM
+    , mapM_     = UVector.mapM_
+    , empty     = UVector.empty
+    , member    = UVector.any . (==)
+    , break     = UVector.break
+    , span      = UVector.span
+    , dropWhile = UVector.dropWhile
+    , takeWhile = UVector.takeWhile
+    , any       = UVector.any
+    , all       = UVector.all
+    , splitAt   = UVector.splitAt
+    , fold      = UVector.foldl'
+    }
 
 
 instance Default UVectorModule where

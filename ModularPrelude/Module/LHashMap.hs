@@ -1,8 +1,15 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides a first-class version
+-- of the "Data.HashMap.Lazy" module.
+-- 
+-- Note that the data type for this module is still HashMap,
+-- and not LHashMap.
 module ModularPrelude.Module.LHashMap
-  ( LHashMapModule (..)
-  , _Data_HashMap_Lazy_
+  ( -- * Module interface
+    LHashMapModule (..)
+    -- * Module contents
+  , LHashMapImplements (..)
   ) where
 
 
@@ -28,23 +35,26 @@ data LHashMapModule = LHashMap
   }
 
 
-_Data_HashMap_Lazy_ :: LHashMapModule
-_Data_HashMap_Lazy_ = LHashMap
-  { map       = LHashMap.map
-  , filter    = LHashMap.filterWithKey
-  , length    = LHashMap.size
-  , singleton = LHashMap.singleton
-  , null      = LHashMap.null
-  , pack      = LHashMap.fromList
-  , unpack    = LHashMap.toList
-  , fromList  = LHashMap.fromList
-  , toList    = LHashMap.toList
-  , lookup    = LHashMap.lookup
-  , empty     = LHashMap.empty
-  , insert    = LHashMap.insert
-  , delete    = LHashMap.delete
-  , member    = LHashMap.member
-  }
+class LHashMapImplements interface where
+  _Data_HashMap_Lazy_ :: interface
+
+instance LHashMapImplements LHashMapModule where
+  _Data_HashMap_Lazy_ = LHashMap
+    { map       = LHashMap.map
+    , filter    = LHashMap.filterWithKey
+    , length    = LHashMap.size
+    , singleton = LHashMap.singleton
+    , null      = LHashMap.null
+    , pack      = LHashMap.fromList
+    , unpack    = LHashMap.toList
+    , fromList  = LHashMap.fromList
+    , toList    = LHashMap.toList
+    , lookup    = LHashMap.lookup
+    , empty     = LHashMap.empty
+    , insert    = LHashMap.insert
+    , delete    = LHashMap.delete
+    , member    = LHashMap.member
+    }
 
 
 instance Default LHashMapModule where

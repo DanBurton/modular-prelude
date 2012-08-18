@@ -1,5 +1,12 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides the core type classes
+-- from "ClassyPrelude" necessary to conveniently interact
+-- with the standard modules provided with modular-prelude-classy.
+-- 
+-- It is recommended that you always import this module
+-- -- *as well as "ModularPrelude"* --
+-- when using other modules from modular-prelude-classy.
 module ModularPrelude.Classy
   ( C.CanMap
   , C.CanConcatMap
@@ -27,9 +34,10 @@ module ModularPrelude.Classy
   , C.CanIsInfixOf
   , C.CanReverse
   , C.CanReplicate
-  , Prelude.Read
+  , Prelude.Read -- Should be in CorePrelude
   ) where
 
 
 import qualified Prelude
 import qualified ClassyPrelude.Classes as C
+

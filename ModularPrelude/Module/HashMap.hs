@@ -1,8 +1,12 @@
 {-# LANGUAGE NoImplicitPrelude, PolymorphicComponents #-}
 
+-- | This module provides a first-class version
+-- of the "Data.HashMap.Strict" module.
 module ModularPrelude.Module.HashMap
-  ( HashMapModule (..)
-  , _Data_HashMap_Strict_
+  ( -- * Module interface
+    HashMapModule (..)
+    -- * Module contents
+  , HashMapImplements (..)
   ) where
 
 
@@ -28,23 +32,26 @@ data HashMapModule = HashMap
   }
 
 
-_Data_HashMap_Strict_ :: HashMapModule
-_Data_HashMap_Strict_ = HashMap
-  { map       = HashMap.map
-  , filter    = HashMap.filterWithKey
-  , length    = HashMap.size
-  , singleton = HashMap.singleton
-  , null      = HashMap.null
-  , pack      = HashMap.fromList
-  , unpack    = HashMap.toList
-  , fromList  = HashMap.fromList
-  , toList    = HashMap.toList
-  , lookup    = HashMap.lookup
-  , empty     = HashMap.empty
-  , insert    = HashMap.insert
-  , delete    = HashMap.delete
-  , member    = HashMap.member
-  }
+class HashMapImplements interface where
+  _Data_HashMap_Strict_ :: interface
+
+instance HashMapImplements HashMapModule where
+  _Data_HashMap_Strict_ = HashMap
+    { map       = HashMap.map
+    , filter    = HashMap.filterWithKey
+    , length    = HashMap.size
+    , singleton = HashMap.singleton
+    , null      = HashMap.null
+    , pack      = HashMap.fromList
+    , unpack    = HashMap.toList
+    , fromList  = HashMap.fromList
+    , toList    = HashMap.toList
+    , lookup    = HashMap.lookup
+    , empty     = HashMap.empty
+    , insert    = HashMap.insert
+    , delete    = HashMap.delete
+    , member    = HashMap.member
+    }
 
 
 instance Default HashMapModule where

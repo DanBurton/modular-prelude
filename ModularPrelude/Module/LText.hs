@@ -1,15 +1,19 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
+-- | This module provides a first-class version
+-- of the "Data.Text.Lazy" module.
 module ModularPrelude.Module.LText
-  ( LTextModule (..)
-  , _Data_Text_Lazy_
+  ( -- * Module interface
+    LTextModule (..)
+    -- * Module contents
+  , LTextImplements (..)
   ) where
 
 
 import ModularPrelude hiding (empty)
-import qualified Data.Text.Lazy as TL
-import qualified Data.Text.Lazy.IO as TL
-import qualified Filesystem.Path.CurrentOS as F
+import qualified Data.Text.Lazy as LText
+import qualified Data.Text.Lazy.IO as LText
+import qualified Filesystem.Path.CurrentOS as FilePath
 
 
 data LTextModule = LText
@@ -34,27 +38,30 @@ data LTextModule = LText
   }
 
 
-_Data_Text_Lazy_ :: LTextModule
-_Data_Text_Lazy_ = LText
-  { map       = TL.map
-  , concatMap = TL.concatMap
-  , filter    = TL.filter
-  , length    = TL.length
-  , singleton = TL.singleton
-  , null      = TL.null
-  , pack      = TL.pack
-  , unpack    = TL.unpack
-  , empty     = TL.empty
-  , readFile  = TL.readFile . F.encodeString
-  , writeFile = TL.writeFile . F.encodeString
-  , break     = TL.break
-  , span      = TL.span
-  , dropWhile = TL.dropWhile
-  , takeWhile = TL.takeWhile
-  , any       = TL.any
-  , all       = TL.all
-  , splitAt   = TL.splitAt
-  }
+class LTextImplements interface where
+  _Data_Text_Lazy_ :: interface
+
+instance LTextImplements LTextModule where
+  _Data_Text_Lazy_ = LText
+    { map       = LText.map
+    , concatMap = LText.concatMap
+    , filter    = LText.filter
+    , length    = LText.length
+    , singleton = LText.singleton
+    , null      = LText.null
+    , pack      = LText.pack
+    , unpack    = LText.unpack
+    , empty     = LText.empty
+    , readFile  = LText.readFile . FilePath.encodeString
+    , writeFile = LText.writeFile . FilePath.encodeString
+    , break     = LText.break
+    , span      = LText.span
+    , dropWhile = LText.dropWhile
+    , takeWhile = LText.takeWhile
+    , any       = LText.any
+    , all       = LText.all
+    , splitAt   = LText.splitAt
+    }
 
 
 instance Default LTextModule where
