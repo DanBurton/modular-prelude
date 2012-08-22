@@ -15,19 +15,31 @@ import qualified Data.HashSet as HashSet
 
 
 data HashSetModule = HashSet
-  { map         :: forall a b. (Hashable b, Eq b) => (a -> b) -> HashSet a -> HashSet b
-  , filter      :: forall a. (a -> Bool) -> HashSet a -> HashSet a
-  , length      :: forall a. HashSet a -> Int
+  { -- Construction
+    empty       :: forall a. HashSet a
   , singleton   :: forall a. Hashable a => a -> HashSet a
+    -- Combine
+  , union       :: forall a. (Eq a, Hashable a) => HashSet a -> HashSet a -> HashSet a
+  , unions      :: forall a. (Eq a, Hashable a) => [HashSet a] -> HashSet a
+    -- Basic interface
   , null        :: forall a. HashSet a -> Bool
-  , pack        :: forall a. (Eq a, Hashable a) => [a] -> HashSet a
-  , unpack      :: forall a. HashSet a -> [a]
-  , fromList    :: forall a. (Eq a, Hashable a) => [a] -> HashSet a
-  , toList      :: forall a. HashSet a -> [a]
-  , empty       :: forall a. HashSet a
+  , size        :: forall a. HashSet a -> Int
+  , member      :: forall a. (Eq a, Hashable a) => a -> HashSet a -> Bool
   , insert      :: forall a. (Eq a, Hashable a) => a -> HashSet a -> HashSet a
   , delete      :: forall a. (Eq a, Hashable a) => a -> HashSet a -> HashSet a
-  , member      :: forall a. (Eq a, Hashable a) => a -> HashSet a -> Bool
+    -- Transformations
+  , map         :: forall a b. (Hashable b, Eq b) => (a -> b) -> HashSet a -> HashSet b
+    -- Difference and intersection
+  , difference  :: forall a. (Eq a, Hashable a) => HashSet a -> HashSet a -> HashSet a
+  , intersection :: forall a. (Eq a, Hashable a) => HashSet a -> HashSet a -> HashSet a
+    -- Folds
+  , foldl'      :: forall a b. (a -> b -> a) -> a -> HashSet b -> a
+  , foldr       :: forall a b. (b -> a -> a) -> a -> HashSet b -> a
+    -- Filter
+  , filter      :: forall a. (a -> Bool) -> HashSet a -> HashSet a
+    -- Lists
+  , toList      :: forall a. HashSet a -> [a]
+  , fromList    :: forall a. (Eq a, Hashable a) => [a] -> HashSet a
   }
 
 
@@ -36,19 +48,31 @@ class HashSetImplements interface where
 
 instance HashSetImplements HashSetModule where
   _Data_HashSet_ = HashSet
-    { map         = HashSet.map
-    , filter      = HashSet.filter
-    , length      = HashSet.size
+    { -- Construction
+      empty       = HashSet.empty
     , singleton   = HashSet.singleton
+      -- Combine
+    , union       = HashSet.union
+    , unions      = HashSet.unions
+      -- Basic interface
     , null        = HashSet.null
-    , pack        = HashSet.fromList
-    , unpack      = HashSet.toList
-    , fromList    = HashSet.fromList
-    , toList      = HashSet.toList
-    , empty       = HashSet.empty
+    , size        = HashSet.size
+    , member      = HashSet.member
     , insert      = HashSet.insert
     , delete      = HashSet.delete
-    , member      = HashSet.member
+      -- Transformations
+    , map         = HashSet.map
+      -- Difference and intersection
+    , difference  = HashSet.difference
+    , intersection = HashSet.intersection
+      -- Folds
+    , foldl'      = HashSet.foldl'
+    , foldr       = HashSet.foldr
+      -- Filter
+    , filter      = HashSet.filter
+      -- Lists
+    , toList      = HashSet.toList
+    , fromList    = HashSet.fromList
     }
 
 
