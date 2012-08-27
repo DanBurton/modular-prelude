@@ -13,7 +13,8 @@ But try this:
 
 You can install just modular-prelude
 if you don't plan on using the Classy module.
-But check it out:
+But if you uncomment the Classy lines in that file,
+try this out:
 
     ghci> let Module.Classy{..} = From._ClassyPrelude_Classes_
 
@@ -31,9 +32,9 @@ until the record system extensions it relies on,
 and the particular ways we are abusing them,
 are more carefully inspected.
 I believe this may be connected to the way that
-I've punned "Import" to be the qualified name
+I've punned "Module" to be the qualified name
 for all of the modules. This appears to only be a problem
-in ghci; using `let Import.Foo{blah} = def in baz` 
+in ghci; using `let Module.Foo{blah} = def in baz` 
 always seems to work as expected in source files.
 
 ----
