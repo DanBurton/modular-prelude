@@ -12,6 +12,7 @@ import qualified ModularPrelude.Module.Text   as Module
 import qualified ModularPrelude.Module.List   as Module
 import qualified ModularPrelude.Module.Classy as Module
 
+import qualified Prelude
 
 import Data.Char (isSpace)
 
@@ -25,5 +26,7 @@ main = do
   where
     Module.Text{pack, dropWhile} = def
     Module.List{dropWhile=ldropWhile} = def
-    Module.Classy{show} = def
+    -- Module.Classy{show} = def
+    show = pack . Prelude.show
+
 
