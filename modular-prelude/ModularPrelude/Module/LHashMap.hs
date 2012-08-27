@@ -112,6 +112,15 @@ instance LHashMapImplements LHashMapModule where
     }
 
 
+-- Copied from unordered-containers 0.2.2.0
+-- todo: cpp, inlinable
+myIntersectionWith :: (Eq k, Hashable k) => (v1 -> v2 -> v3) -> HashMap k v1
+                 -> HashMap k v2 -> HashMap k v3
+myIntersectionWith f a b = LHashMap.foldlWithKey' go LHashMap.empty a where
+  go m k v = case LHashMap.lookup k b of
+    Just w -> LHashMap.insert k (f v w) m
+    _      -> m
+
 instance Default LHashMapModule where
   def = _Data_HashMap_Lazy_
 
