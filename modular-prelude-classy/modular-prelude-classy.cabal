@@ -18,6 +18,6 @@ library
                      ,   ModularPrelude.Module.Classy
 
   build-depends:       base==4.*
-                     , classy-prelude==0.2.*
+                     , classy-prelude==0.3.*
                      , modular-prelude==0.4.*
 
