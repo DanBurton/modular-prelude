@@ -9,11 +9,10 @@
 module ModularPrelude
     ( module CorePrelude
     , module Data.Default
-    , Prelude.Read -- should be in CorePrelude
     , Prelude.String
     ) where
 
-import CorePrelude hiding (empty, concat, (++), or, elem, zip, zipWith, unzip)
+import CorePrelude
 import Data.Default
 
 import qualified Prelude
